@@ -12,9 +12,9 @@ class RackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function create()
     {
-        return view('racks.index');
+        return view('racks.create');
     }
 
     /**
@@ -22,7 +22,7 @@ class RackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function index()
     {
         //
     }
