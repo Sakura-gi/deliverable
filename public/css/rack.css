@@ -1,0 +1,10 @@
+.header {
+    background-color: green;
+}
+
+.wrap{
+    width: 90%;
+    background-color: red;
+    height: 300px;
+    margin: 0 auto;
+}
