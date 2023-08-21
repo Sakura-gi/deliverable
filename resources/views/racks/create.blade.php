@@ -1,10 +1,10 @@
 <x-main-layout>
 
    <div class="wrap">
-         <body>
-             　　<form action="/racks" method="POST">
-                     <h1>your rack</h1>
-                    
+        <body
+         ><h1></h1>
+            <form action="/racks" method="POST">
+              @csrf
                      <div class= "title">
                          <h2>Title</h2>
                          <input type='text' name="post[title]" placeholder="タイトル(/作者名)"/>
@@ -19,10 +19,10 @@
                          <h2>Comment</h2>
                          <textarea name="post[comment]" placeholder="コメントを入力"/></textarea>
                      </div>
-                   
+                    <div class="submit-btn">
                      <input type="submit" value="store"/>
-           
-           　　　</form>
-          </body> 
+                    </div>
+            </form>
+        </body> 
    </div> 
 </x-main-layout>

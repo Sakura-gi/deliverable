@@ -7,35 +7,31 @@ use Illuminate\Http\Request;
 
 class RackController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+  
+    public function index()
+    {
+        $user = auth()->user();
+        return view('racks.index')->with(["user" => $user]);
+    }
+    // userupdateの処理を書く
+
     public function create()
     {
         return view('racks.create');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
+ 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $input = $request['post'];
+         $post->fill($input)->save();
+         return redirect('/posts/' . $post->id);
     }
 
     /**

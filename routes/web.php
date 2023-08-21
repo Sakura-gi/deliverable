@@ -21,8 +21,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [RackController::class, 'create'])->name('racks.create');
-    
+    Route::get('/', [RackController::class, 'index'])->name('racks.index');
+    Route::get('/racks/create', [RackController::class, 'create'])->name('racks.create');
+    Route::post('/racks',[RackController::class.'store']);
+    Route::get('/racks/{post}', [RackController::class, 'list']);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
