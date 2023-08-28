@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('category_id')->condtraind();
             $table->string('title',50)->nullable();
             $table->string('url')->nullable();
-            $table->text('comment');
+            $table->text('comment')->nullable();
             $table->timestamps();
         });
     }

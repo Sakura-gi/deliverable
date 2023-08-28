@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Rack;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class RackController extends Controller
 {
     
   
-    public function index()
+    public function index(Post $post)
     {
         $user = auth()->user();
         return view('racks.index')->with(["user" => $user]);
+        
     }
     // userupdateの処理を書く
 
@@ -21,28 +22,20 @@ class RackController extends Controller
         return view('racks.create');
     }
  
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request, Post $post)
     {
         $input = $request['post'];
-         $post->fill($input)->save();
-         return redirect('/posts/' . $post->id);
+        $input += ['user_id' => $request->user()->id];
+        $input += ['category_id' => 1];
+        $post->fill($input)->save();
+        return view('racks.show')->with(['post' => $post]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Rack  $rack
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Rack $rack)
+    
+    public function show(Post $post)
     {
-        //
+        return view('racks.show')->with(['post' => $post]);
     }
 
     /**

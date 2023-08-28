@@ -1,9 +1,19 @@
+<!DOCTYPE HTML>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <title>Blog</title>
+    </head>
+
 <x-main-layout>
 
    <div class="wrap">
-        <body
-         ><h1></h1>
-            <form action="/racks" method="POST">
+        <body>
+            <h1>投稿作成フォーム</h1>
+            <div class="create-link">
+                 <a href="/">戻る</a>
+            </div>
+            <form action="/racks/create" method="POST">
               @csrf
                      <div class= "title">
                          <h2>Title</h2>

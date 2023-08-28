@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Rack extends Model
+class Post extends Model
 {
     use HasFactory;
     
@@ -13,6 +13,8 @@ class Rack extends Model
         'title',
         'url',
         'comment',
+        'user_id',
+        'category_id',
         ];
         
 }

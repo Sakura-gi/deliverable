@@ -17,6 +17,9 @@
                     <input type='text' name="user[name]" placeholder="ユーザー名" value="{{ $user->name }}"/>
                 </div>
             </form>
+            
+            
+            
         </body> 
    </div> 
 </x-main-layout>
