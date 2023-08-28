@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RackController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/racks/create', [RackController::class, 'create'])->name('racks.create');
     Route::get('/racks/{post}',[RackController::class,'show']);
     Route::post('/racks/create',[RackController::class,'store']);
+    // user一覧を表示するページのルーティングを書く。
+    
+    Route::get('/users/racks/{user}',[UserController::class,'all_racks']);
+    Route::get('/users/{user}/edit',[UserController::class,'edit']);
+    Route::put('/users/{user}',[UserController::class,'update']);
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

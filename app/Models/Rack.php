@@ -15,4 +15,6 @@ class Rack extends Model
         'comment',
         ];
         
+        
+        
 }

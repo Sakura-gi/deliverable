@@ -10,9 +10,11 @@
     </head>
 
     <body>
+        
         <h1 class="title">
             {{ $post->title }}
         </h1>
+        
         <div class="url">
             {{ $post->url }}
         </div>
@@ -24,6 +26,6 @@
         <div class="footer">
             <a href="/">戻る</a>
         </div>
-
+        
     </body>
 </html>
