@@ -1,10 +1,29 @@
 .header {
-    background-color: green;
+    background-color: #696969; /*グレー*/
 }
 
 .wrap{
     width: 90%;
-    background-color: #CEF9DC;
+    background-color: #C0C0C0;
     height: 300px;
     margin: 0 auto;
+}
+.create-link {margin: 30px 0;
+}    
+.create-link a{
+    padding: 8px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn input{
+    padding: 8px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
 }

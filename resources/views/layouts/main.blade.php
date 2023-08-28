@@ -21,8 +21,9 @@
 
                 <header class="header">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                       ヘッダーです!
+                       SubscRack
                     </div>
+                     <a href="/racks/create"></a>
                 </header>
 
             <!-- Page Content -->
