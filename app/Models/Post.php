@@ -17,5 +17,11 @@ class Post extends Model
         'category_id',
         ];
         
+         // Userとの関連付け
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
 }
 

@@ -24,13 +24,17 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [RackController::class, 'index'])->name('racks.index');
     Route::get('/racks/create', [RackController::class, 'create'])->name('racks.create');
-    Route::get('/racks/{post}',[RackController::class,'show']);
     Route::post('/racks/create',[RackController::class,'store']);
+    Route::get('/racks/stock',[RackController::class,'stock']);
+    Route::get('/racks/{post}',[RackController::class,'show']);
+    
     // user一覧を表示するページのルーティングを書く。
     
-    Route::get('/users/racks/{user}',[UserController::class,'all_racks']);
-    Route::get('/users/{user}/edit',[UserController::class,'edit']);
-    Route::put('/users/{user}',[UserController::class,'update']);
+    Route::get('/users',[UserController::class,'index']);
+    Route::get('/users/stock',[UserController::class,'stock']);
+    Route::get('/users/{user}',[UserController::class,'show']);
+
+
     
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

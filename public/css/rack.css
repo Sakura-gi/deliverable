@@ -27,3 +27,12 @@
     font-weight: bold;
     box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
 }
+
+.stock-link a{
+    padding: 8px 20px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 3px rgba(0, 0, 0, 0.2);
+}

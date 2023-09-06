@@ -2,14 +2,11 @@
 
    <div class="wrap">
         <body>
+            
             <div class='userinfo'>
                 <h1>
                     {{ $user->name }}
                 </h1>
-                
-                <div class="create-link">
-                    <a href="/racks/create">新規投稿作成</a>
-                </div>
                 
                 <form action="/users/{{ $user->id }}" method="POST">
                     @csrf
@@ -24,11 +21,21 @@
                     </div>
                     
                 </form>
+                
+                 <div class="create-link">
+                    <a href="/racks/create">新規投稿作成</a>
+                </div>
+                
+            </div>
+            
+             <a>本棚</a>
+            
+            <div class="stock-link">
+             <a href="/racks/stock">すべての投稿を見る</a>
             </div>
             
             <div class='rack'>
-                    
-                  @forelse($posts as $post)
+               　　@forelse($posts as $post)
                 <li>
                     <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
                 </li>
@@ -36,12 +43,6 @@
                 <li>投稿がありません。</li>
                   @endforelse
             </div> 
-            
-            
-            
-            
-            
-            
             
         </body> 
    </div> 

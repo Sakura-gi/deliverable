@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 class RackController extends Controller
 {
     
-  
+    public function stock(Post $post)
+    {
+        $user = auth()->user();
+        $posts = $user->posts()->get();
+        return view('racks.stock',compact('user', 'posts'));
+    }
+   
+     
     public function index(Post $post)
     {
         $user = auth()->user();
@@ -18,17 +25,11 @@ class RackController extends Controller
     }
     // userupdateの処理を書く
 
-    public function all_racks(User $user)
-    {
-        
-    }
-  
     public function create()
     {
         return view('racks.create');
     }
  
-    
     public function store(Request $request, Post $post)
     {
         $input = $request['post'];
@@ -38,18 +39,13 @@ class RackController extends Controller
         return view('racks.show')->with(['post' => $post]);
     }
 
-    
     public function show(Post $post)
     {
         return view('racks.show')->with(['post' => $post]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Rack  $rack
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function edit(Rack $rack)
     {
         //
