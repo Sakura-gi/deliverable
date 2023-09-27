@@ -15,11 +15,11 @@
         
         <a href="/">戻る</a>
         
+        
         <div class='rack'>
                　　@forelse($posts as $post)
                 <li>
                     <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
-                    <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                      @if ($post->is_favorite)
                    <a>★</a>
                    @else
