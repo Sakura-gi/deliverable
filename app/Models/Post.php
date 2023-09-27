@@ -15,12 +15,28 @@ class Post extends Model
         'comment',
         'user_id',
         'category_id',
+        'is_favorite',
         ];
         
          // Userとの関連付け
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+        
+    public function getByLimit(int $limit_count = 10)
+    {
+        return $this->orderBy('updated_at', 'DESC')->limit($limit_count)->get();
+    }
+    
+    public function getPaginateByLimit(int $limit_count = 5)
+    {
+        return $this::with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
     
 }

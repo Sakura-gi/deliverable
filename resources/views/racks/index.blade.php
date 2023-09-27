@@ -35,13 +35,28 @@
             </div>
             
             <div class='rack'>
-               　　@forelse($posts as $post)
-                <li>
-                    <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
-                </li>
-                  @empty
-                <li>投稿がありません。</li>
+                 @forelse($posts as $post)
+                <div class='rack-box'>
+                    <li>
+                        <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
+                        @if ($post->is_favorite)
+                       <a>★</a>
+                       @else
+                        <a></a>
+                         @endif
+                    </li>
+                </div>
+                      @empty
+                    <li>投稿がありません。</li>
                   @endforelse
+            </div> 
+            
+            <div class=is_favolite>
+                @foreach ($favoritePosts as $post)
+                <li>
+                    <a href="/racks/{{ $post->id }}">{{ $post->title }}★</a>
+                </li>
+                @endforeach
             </div> 
             
         </body> 
