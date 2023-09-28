@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('title',50)->nullable();
             $table->string('url')->nullable();
             $table->text('comment')->nullable();
+            $table->boolean('is_favolite')->default(false);
             $table->timestamps();
         });
     }
@@ -31,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+       
     }
 };

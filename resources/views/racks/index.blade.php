@@ -44,11 +44,26 @@
                         <div class='book-info'>
                             <a href="/racks/{{ $post->id }}"><br>{{ $post->updated_at }}</a>
                         </div> 
+                        <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
+                        @if ($post->is_favorite)
+                       <a>★</a>
+                       @else
+                        <a></a>
+                         @endif
                     </li>
                 </div>
                       @empty
                     <li>投稿がありません。</li>
                   @endforelse
+            </div> 
+            
+            <div class=is_favolite>
+                @foreach ($favoritePosts as $post)
+                <li>
+                    <a href="/racks/{{ $post->id }}">{{ $post->title }}★</a>
+                </li>
+                @endforeach
+
             </div> 
             
             <div class="head">

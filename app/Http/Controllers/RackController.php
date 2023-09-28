@@ -21,7 +21,6 @@ class RackController extends Controller
     {
         $user = auth()->user();
         $posts = $user->posts()->orderBy('updated_at', 'DESC')->take(10)->get();
-        $favoritePosts = Post::where('is_favorite', true)->take(5)->get();
         return view('racks.index',compact('user', 'posts','favoritePosts'));
          
         
