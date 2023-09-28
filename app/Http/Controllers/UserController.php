@@ -13,6 +13,12 @@ class UserController extends Controller
         return view('users.index',compact('users'));
     } 
     
+    public function edit()
+    {
+        $user = auth()->user();
+        return view('users.edit')->with('user', $user);
+    }
+    
    
     public function update(Request $request, User $user)
     {
@@ -36,6 +42,8 @@ class UserController extends Controller
         $posts = $user->posts()->take(10)->orderBy('created_at', 'desc')->get();
         return view('users.show', compact('user', 'posts'));
     }
+    
+    
 
     
     

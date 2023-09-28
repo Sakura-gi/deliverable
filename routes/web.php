@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
   
     
     Route::get('/users',[UserController::class,'index']);
+    Route::get('users/edit',[UserController::class,'edit']);
     Route::get('/users/stock',[UserController::class,'stock']);
     Route::get('/users/{user}',[UserController::class,'show']);
     

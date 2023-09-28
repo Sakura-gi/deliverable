@@ -12,7 +12,7 @@ class RackController extends Controller
     public function stock(Post $post)
     {
         $user = auth()->user();
-        $posts = $user->posts()->orderBy('updated_at', 'DESC')->limit(10)->get();
+        $posts = $user->posts()->orderBy('updated_at', 'DESC')->limit(30)->get();
         return view('racks.stock',compact('user', 'posts'));
     }
    
@@ -20,8 +20,7 @@ class RackController extends Controller
     public function index(Post $post)
     {
         $user = auth()->user();
-        $posts = $user->posts()->orderBy('updated_at', 'DESC')->take(5)->get();
-        $favoritePosts = Post::where('is_favorite', true)->take(5)->get();
+        $posts = $user->posts()->orderBy('updated_at', 'DESC')->take(10)->get();
         return view('racks.index',compact('user', 'posts','favoritePosts'));
          
         
