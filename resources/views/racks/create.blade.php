@@ -15,23 +15,40 @@
             </div>
             <form action="/racks/create" method="POST">
               @csrf
-                     <div class= "title">
+                    <div class= "title">
                          <h2>Title</h2>
                          <input type='text' name="post[title]" placeholder="タイトル(/作者名)"/>
-                     </div>
+                    </div>
                    
-                     <div class="url">
+                    <div class="url">
                          <h2>URL</h2>
                          <input type='text' name="post[url]" placeholder="URLをペースト"/>
-                     </div>
+                    </div>
                    
-                     <div class="comment">
+                    <div class="comment">
                          <h2>Comment</h2>
                          <textarea name="post[comment]" placeholder="コメントを入力"/></textarea>
-                     </div>
+                    </div>
+                   
+                    <div class=category>
+                      <h2>Catagory</h2>
+                      　 <input type="text" name="post[category_name]" list="category" placeholder="新しいカテゴリー">
+                         <datalist id="category">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->name }}">{{ $category->name }}</option>
+                            @endforeach
+                         </datalist>
+                    
+                    <div class=is_favolite>
+                          <label for="has_data">お気に入りに登録する</label>
+                        　<input type="checkbox" name="is_favolite" id="is_favolite" {{ old('is_favolite') ? 'checked' : '' }}>
+                    </div>
+                    
                     <div class="submit-btn">
                      <input type="submit" value="store"/>
                     </div>
+                    
+                    
             </form>
         </body> 
    </div> 

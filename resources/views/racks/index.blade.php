@@ -4,46 +4,71 @@
         <body>
             
             <div class='userinfo'>
-                <h1>
-                    {{ $user->name }}
-                </h1>
                 
-                <form action="/users/{{ $user->id }}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="name">
-                        <h2>NAME</h2>
-                        <input type='text' name="user[name]" placeholder="ユーザー名" value="{{ $user->name }}"/>
-                    </div>
-                    
-                    <div class="submit-btn">
-                     <input type="submit" value="ユーザー名を変更"/>
-                    </div>
-                    
-                </form>
+                <div class="user-name">
+                    <p>
+                        {{ $user->name }}のRack
+                    <p>
+                 </div>
                 
-                 <div class="create-link">
+                <div class="link">
+                    <a href="/users/edit">ユーザー名を変更する</a>
+                </div>
+                
+               
+                
+                 <div class="link">
                     <a href="/racks/create">新規投稿作成</a>
                 </div>
                 
             </div>
             
-             <a>本棚</a>
-            
-            <div class="stock-link">
+            <div class="link">
              <a href="/racks/stock">すべての投稿を見る</a>
             </div>
             
+            <div class="head">
+             <p>最近の投稿</p>
+            </div>
+             
             <div class='rack'>
-               　　@forelse($posts as $post)
-                <li>
-                    <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
-                </li>
-                  @empty
-                <li>投稿がありません。</li>
+                 @forelse($posts as $post)
+                <div class='rack-box'>
+                    <li>
+                        <div class='book-title'>
+                            <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
+                            @if ($post->is_favorite)<a>★</a>
+                            @else<a></a>
+                            @endif
+                        </div>
+                        <div class='book-info'>
+                            <a href="/racks/{{ $post->id }}"><br>{{ $post->updated_at }}</a>
+                        </div> 
+                    </li>
+                </div>
+                      @empty
+                    <li>投稿がありません。</li>
                   @endforelse
             </div> 
             
+            <div class="head">
+             <p>お気に入りの投稿</p>
+            </div>
+            
+            <div class='rack'>
+                    @foreach ($favoritePosts as $post)
+                    <div class='rack-box'>
+                        <li>
+                            <div class='book-title'>
+                              <a href="/racks/{{ $post->id }}">{{ $post->title }}★</a>
+                            </div>
+                            <div class='book-info'>
+                             <a href="/racks/{{ $post->id }}"><br>{{ $post->updated_at }}</a>
+                            </div>
+                        </li>
+                    </div>
+                    @endforeach
+            </div>
         </body> 
    </div> 
 </x-main-layout>

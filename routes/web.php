@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RackController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController; 
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,9 +31,14 @@ Route::middleware('auth')->group(function () {
     
     // user一覧を表示するページのルーティングを書く。
     
+  
+    
     Route::get('/users',[UserController::class,'index']);
+    Route::get('users/edit',[UserController::class,'edit']);
     Route::get('/users/stock',[UserController::class,'stock']);
     Route::get('/users/{user}',[UserController::class,'show']);
+    
+    Route::get('/categories/{category}', [CategoryController::class,'index']);
 
 
     

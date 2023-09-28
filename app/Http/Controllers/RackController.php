@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class RackController extends Controller
@@ -11,7 +12,7 @@ class RackController extends Controller
     public function stock(Post $post)
     {
         $user = auth()->user();
-        $posts = $user->posts()->get();
+        $posts = $user->posts()->orderBy('updated_at', 'DESC')->limit(30)->get();
         return view('racks.stock',compact('user', 'posts'));
     }
    
@@ -19,22 +20,45 @@ class RackController extends Controller
     public function index(Post $post)
     {
         $user = auth()->user();
-        $posts = $user->posts()->take(5)->get();
-        return view('racks.index',compact('user', 'posts'));
+        $posts = $user->posts()->orderBy('updated_at', 'DESC')->take(10)->get();
+        $favoritePosts = Post::where('is_favorite', true)->take(5)->get();
+        return view('racks.index',compact('user', 'posts','favoritePosts'));
+         
         
     }
     // userupdateの処理を書く
 
-    public function create()
+    public function create(Category $category)
     {
-        return view('racks.create');
+        return view('racks.create')->with(['categories' => $category->get()]);
     }
  
     public function store(Request $request, Post $post)
     {
         $input = $request['post'];
         $input += ['user_id' => $request->user()->id];
-        $input += ['category_id' => 1];
+        
+        
+        $categoryName = $input['category_name'];
+        
+
+        // カテゴリーが既に存在するかどうかを確認
+        $existingCategory = Category::where('name', $categoryName)->first();
+        if (!$existingCategory) {
+            // カテゴリーが存在しない場合、新しいカテゴリーを作成
+            $category = new Category();
+            $category->name = $categoryName;
+            $category->save();
+            
+            $category_id = $category->id;
+        } else {
+            // カテゴリーが既に存在する場合、それを使用
+            $category_id = $existingCategory->id;
+        }
+        // postsテーブルに対するcategory_idの保存処理を書く。
+        $input += ['category_id' => $category_id];
+        
+        $post->is_favorite = true;
         $post->fill($input)->save();
         return view('racks.show')->with(['post' => $post]);
     }

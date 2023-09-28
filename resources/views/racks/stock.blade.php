@@ -17,8 +17,21 @@
         
         <div class='rack'>
                　　@forelse($posts as $post)
+                <div class='rack-box'>
                 <li>
-                    <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
+                    <div class='book-title'>
+                        <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
+                        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                         @if ($post->is_favorite)
+                       　<a>★</a>
+                       　@else
+                        <a></a>
+                         @endif
+                    </div>
+                    <div class='book-info'>
+                        <a href="/racks/{{ $post->id }}"><br>{{ $post->updated_at }}</a>
+                    </div>
+                </div>
                 </li>
                   @empty
                 <li>投稿がありません。</li>
