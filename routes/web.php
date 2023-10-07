@@ -18,11 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function (){
+Route::middleware('auth')->group(function () {
     Route::get('/', [RackController::class, 'index'])->name('racks.index');
     Route::get('/racks/create', [RackController::class, 'create'])->name('racks.create');
     Route::post('/racks/create',[RackController::class,'store']);
