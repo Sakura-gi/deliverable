@@ -19,10 +19,8 @@
                　　@forelse($posts as $post)
                 <div class='rack-box'>
                 <li>
-
                     <div class='book-title'>
                         <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
-                        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
                          @if ($post->is_favorite)
                        　<a>★</a>
                        　@else
@@ -35,7 +33,7 @@
                 </div>
 
                     <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
-                    <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+                    
                      @if ($post->is_favorite)
                    <a>★</a>
                    @else

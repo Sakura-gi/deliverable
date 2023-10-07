@@ -13,30 +13,31 @@
 
     <body>
         
-        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-        
         <h1 class="title">
             {{ $post->title }}
         </h1>
         
         <div class="url">
             <a href="{{ $post->url }}" target="_blank">リンク先へ</a>
-          
         </div>
         
         <dev class="comment">
             {{ $post->comment }}
         </dev>
         
+        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+        
         <div>
         @if ($post->is_favorite)
-            <p>★お気に入りの投稿です。</p>
+            <p>★お気に入り</p>
         @else
             <p>お気に入りではありません。</p>
         @endif
-    　　</div>
+        </div>
         
-        
+        <div class="edit">
+           <a href="/posts/{{ $post->id }}">編集する</a>
+        </div>        
         
         <div class="footer">
             <a href="/">ホームに戻る</a>

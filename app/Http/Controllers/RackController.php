@@ -20,7 +20,8 @@ class RackController extends Controller
     public function index(Post $post)
     {
         $user = auth()->user();
-        $posts = $user->posts()->orderBy('updated_at', 'DESC')->take(10)->get();
+        $posts = $user->posts()->orderBy('updated_at', 'DESC')->take(20)->get();
+        $favoritePosts = Post::where('is_favorite', true)->take(5)->get();
         return view('racks.index',compact('user', 'posts','favoritePosts'));
          
         
@@ -57,7 +58,6 @@ class RackController extends Controller
         // postsテーブルに対するcategory_idの保存処理を書く。
         $input += ['category_id' => $category_id];
         
-        $post->is_favorite = true;
         $post->fill($input)->save();
         return view('racks.show')->with(['post' => $post]);
     }
@@ -69,30 +69,47 @@ class RackController extends Controller
 
     
     
-    public function edit(Rack $rack)
+   public function edit(Category $category, Post $post)
     {
-        //
+        $categories = Category::get();
+        return view('racks.edit',compact('post', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Rack  $rack
-     * @return \Illuminate\Http\Response
-     */
-    public function update()
+    public function update(Request $request, Post $post)
     {
+        $input_post = $request['post'];
+        $categoryName = $input_post['category_name'];
+        
+
+        // カテゴリーが既に存在するかどうかを確認
+        $existingCategory = Category::where('name', $categoryName)->first();
+        if (!$existingCategory) {
+            // カテゴリーが存在しない場合、新しいカテゴリーを作成
+            $category = new Category();
+            $category->name = $categoryName;
+            $category->save();
+            
+            $category_id = $category->id;
+        } else {
+            // カテゴリーが既に存在する場合、それを使用
+            $category_id = $existingCategory->id;
+        }
+        
+        $input_post += ['category_id' => $category_id];
+
+         $post->is_favorite = $request->has('post.is_favorite') ? true : false;
+        
+        $post->fill($input_post)->save();
+        
+        return view('racks.show')->with(['post' => $post]);
+    }
+    
+    public function favorites()
+    {
+        $favoritePosts = Post::where('is_favorite', true)->get();
+        return view('racks.favorites', compact('favoritePosts'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Rack  $rack
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Rack $rack)
-    {
-        //
-    }
+
+
 }

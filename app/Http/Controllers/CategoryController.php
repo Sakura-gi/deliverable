@@ -11,4 +11,18 @@ class CategoryController extends Controller
         return view('categories.index')->with(['posts' => $category->getByCategory()]);
     }
 
+    public function select(Category $category)
+    {
+        return view('categories.select')->with(['categories' => $category->get()]);
+    }
+    
+    public function categories()
+    {
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
+    }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

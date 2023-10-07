@@ -18,5 +18,6 @@
         <li>投稿がありません。</li>
           @endforelse
     </div> 
+
     
 </x-main-layout>

@@ -2,33 +2,39 @@
 
    <div class="wrap">
         <body>
-            
-            <div class='userinfo'>
-                
-                <div class="user-name">
-                    <p>
-                        {{ $user->name }}のRack
-                    <p>
-                 </div>
-                
-                <div class="link">
-                    <a href="/users/edit">ユーザー名を変更する</a>
-                </div>
-                
-               
-                
-                 <div class="link">
-                    <a href="/racks/create">新規投稿作成</a>
-                </div>
-                
+            <div class="user-name">
+                <p>
+                    {{ $user->name }}のRack
+                <p>
+             </div>
+             
+            <div class="link">
+                <a href="/racks/create">新規投稿作成</a>
             </div>
             
             <div class="link">
-             <a href="/racks/stock">すべての投稿を見る</a>
+               <a href="/racks/stock">すべての投稿を見る</a>
             </div>
             
+            <div class="link">
+                <a href="/racks/favorites">お気に入りの投稿を見る</a>
+            </div>
+            
+            <div class="link">
+                <a href="/categories/select">カテゴリーごとの投稿を見る</a>
+            </div>
+           
+           
+           
+            <div class="link">
+                <a href="/users/edit">ユーザー名を変更する</a>
+            </div>
+        
+            
+            
+            
             <div class="head">
-             <p>最近の投稿</p>
+             <p>最近追加したもの</p>
             </div>
              
             <div class='rack'>
@@ -44,12 +50,6 @@
                         <div class='book-info'>
                             <a href="/racks/{{ $post->id }}"><br>{{ $post->updated_at }}</a>
                         </div> 
-                        <a href="/racks/{{ $post->id }}">{{ $post->title }}</a>
-                        @if ($post->is_favorite)
-                       <a>★</a>
-                       @else
-                        <a></a>
-                         @endif
                     </li>
                 </div>
                       @empty
@@ -57,17 +57,8 @@
                   @endforelse
             </div> 
             
-            <div class=is_favolite>
-                @foreach ($favoritePosts as $post)
-                <li>
-                    <a href="/racks/{{ $post->id }}">{{ $post->title }}★</a>
-                </li>
-                @endforeach
-
-            </div> 
-            
             <div class="head">
-             <p>お気に入りの投稿</p>
+             <p>お気に入り</p>
             </div>
             
             <div class='rack'>

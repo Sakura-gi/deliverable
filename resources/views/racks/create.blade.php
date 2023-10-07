@@ -32,7 +32,7 @@
                    
                     <div class=category>
                       <h2>Catagory</h2>
-                      　 <input type="text" name="post[category_name]" list="category" placeholder="新しいカテゴリー">
+                        <input type="text" name="post[category_name]" list="category" placeholder="新しいカテゴリー">
                          <datalist id="category">
                             @foreach($categories as $category)
                                 <option value="{{ $category->name }}">{{ $category->name }}</option>
@@ -40,8 +40,8 @@
                          </datalist>
                     
                     <div class=is_favolite>
-                          <label for="has_data">お気に入りに登録する</label>
-                        　<input type="checkbox" name="is_favolite" id="is_favolite" {{ old('is_favolite') ? 'checked' : '' }}>
+                            <label for="has_data">お気に入りに登録する</label>
+                            <input type="checkbox" name="is_favorite" id="is_favorite" {{ old('is_favorite') ? 'checked' : '' }}>
                     </div>
                     
                     <div class="submit-btn">
