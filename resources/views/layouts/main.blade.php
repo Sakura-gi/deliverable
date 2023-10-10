@@ -28,10 +28,7 @@
                          <a href="/users">友達の本棚を見る</a>
                         </div>
                         
-                        
-                        
                     </div>
-                     <a href="/racks/create"></a>
                 </header>
 
             <!-- Page Content -->

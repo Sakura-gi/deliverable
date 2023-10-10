@@ -9,10 +9,16 @@
 
    <div class="wrap">
         <body>
-            <h1>投稿作成フォーム</h1>
-            <div class="create-link">
+            <div class='head'>
+                投稿作成フォーム
+            </div>
+            
+
+            <div class="link-b">
                  <a href="/">戻る</a>
             </div>
+
+            <div>
             <form action="/racks/create" method="POST">
               @csrf
                     <div class= "title">
@@ -45,11 +51,12 @@
                     </div>
                     
                     <div class="submit-btn">
-                     <input type="submit" value="store"/>
+                     <input type="submit" value="本棚にしまう"/>
                     </div>
                     
                     
             </form>
+            </div>
         </body> 
    </div> 
 </x-main-layout>

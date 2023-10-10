@@ -20,11 +20,11 @@
                 <a href="/racks/favorites">お気に入りの投稿を見る</a>
             </div>
             
-            <div class="link">
+            {{-- <div class="link">
                 <a href="/categories/select">カテゴリーごとの投稿を見る</a>
-            </div>
-           
-           
+            </div> --}}
+            
+            
            
             <div class="link">
                 <a href="/users/edit">ユーザー名を変更する</a>
