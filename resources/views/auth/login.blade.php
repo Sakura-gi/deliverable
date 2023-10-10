@@ -44,4 +44,7 @@
             </x-primary-button>
         </div>
     </form>
+    
+    <a href="/register">アカウント作成</a>
+    
 </x-guest-layout>
