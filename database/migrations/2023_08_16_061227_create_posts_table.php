@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('title',50)->nullable();
             $table->string('url')->nullable();
             $table->text('comment');
+            $table->boolean('is_favorite')->default(false);
             $table->timestamps();
         });
     }
