@@ -58,7 +58,10 @@ class RackController extends Controller
         // postsテーブルに対するcategory_idの保存処理を書く。
         $input += ['category_id' => $category_id];
         
-        $post->fill($input)->save();
+    $isfavorite = $request->has('is_favorite');
+    $input['is_favorite'] = $isfavorite;
+       
+       $post->fill($input)->save();
         return view('racks.show')->with(['post' => $post]);
     }
 

@@ -45,10 +45,10 @@
                             @endforeach
                          </datalist>
                     
-                    <div class=is_favolite>
-                            <label for="has_data">お気に入りに登録する</label>
-                            <input type="checkbox" name="is_favorite" id="is_favorite" {{ old('is_favorite') ? 'checked' : '' }}>
-                    </div>
+                   <div class="is_favorite">
+    <label for="is_favorite">お気に入りに登録する</label>
+    <input type="checkbox" name="is_favorite" id="is_favorite">
+</div>>
                     
                     <div class="submit-btn">
                      <input type="submit" value="本棚にしまう"/>
