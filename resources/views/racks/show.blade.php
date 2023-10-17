@@ -12,20 +12,33 @@
 <x-main-layout>
 
     <body>
-        
-        <h1 class="title">
+        <div class="title">
+            <div class='head'>
+                <p>タイトル</p>
+            </div>
             {{ $post->title }}
-        </h1>
+        </div>
         
         <div class="url">
+            <div class='head'>
+                <p>URL</p>
+            </div>
             <a href="{{ $post->url }}" target="_blank">リンク先へ</a>
         </div>
         
         <dev class="comment">
+            <div class='head'>
+                <p>コメント</p>
+            </div>
             {{ $post->comment }}
         </dev>
         
-        <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+        <div class='category'>
+            <div class='head'>
+                <p>カテゴリー</p>
+            </div>
+            <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+        </div>
         
         <div>
         @if ($post->is_favorite)
@@ -35,11 +48,11 @@
         @endif
         </div>
         
-        <div class="edit">
+        <div class="link">
            <a href="/posts/{{ $post->id }}">編集する</a>
         </div>        
         
-        <div class="footer">
+        <div class="link">
             <a href="/">ホームに戻る</a>
         </div>
 

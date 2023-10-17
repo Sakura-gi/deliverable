@@ -40,9 +40,10 @@
             <label for="is_favorite">お気に入り：</label>
             <input type="checkbox" id="is_favorite" name="post[is_favorite]" value="1" {{ $post->is_favorite ? 'checked' : '' }}>
         </div>
-        
-    <input type="submit" value="保存">
-    </form>
+        <div class="submit-btn">
+            <input type="submit" value="保存">
+        </div>
+    </form>    
 </body>
     
     

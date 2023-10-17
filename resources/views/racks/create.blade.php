@@ -48,7 +48,7 @@
                    <div class="is_favorite">
     <label for="is_favorite">お気に入りに登録する</label>
     <input type="checkbox" name="is_favorite" id="is_favorite">
-</div>>
+</div>
                     
                     <div class="submit-btn">
                      <input type="submit" value="本棚にしまう"/>
